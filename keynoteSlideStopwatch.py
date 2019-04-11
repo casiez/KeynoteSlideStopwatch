@@ -77,7 +77,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
         return bytes(content, 'UTF-8')
 
     def log_message(self, format, *args):
-		# http.server.BaseHTTPRequestHandler.log_message(self, format, *args)
+        # http.server.BaseHTTPRequestHandler.log_message(self, format, *args)
         return 
 
     def respond(self, opts):
