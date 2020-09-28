@@ -2,7 +2,9 @@
 
 Allows to measure the time spent on each slide during a presentation with Apple Keynote.
 
-1. run ```keynoteSlideStopwatch.py``` from a terminal using python3
+Install using ```pip install keynoteSlideStopwatch```
+
+1. run ```keynoteSlideStopwatch``` from a terminal
 1. play your presentation
 
 The time spent for each slide will appear in the terminal as such:
