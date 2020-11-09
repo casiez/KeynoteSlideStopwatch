@@ -11,7 +11,7 @@ import signal
 import sys
 from datetime import datetime
 
-PORT = 8000
+PORT = 8327
 
 prevSlide = {'num': -1}
 totalTime = 0
@@ -25,7 +25,7 @@ on run {arg1}
             if playing then
                 tell the front document
                     set mySlide to slide number of current slide
-                    do shell script ("curl 'http://localhost:8000/main?slide='" & mySlide)
+                    do shell script ("curl 'http://localhost:8327/main?slide='" & mySlide)
                     log (mySlide)
                 end tell
             end if
