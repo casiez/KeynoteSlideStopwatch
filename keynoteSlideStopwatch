@@ -11,10 +11,11 @@ import signal
 import sys
 from datetime import datetime
 
-PORT = 8327
+PORT = 49552
 
 prevSlide = {'num': -1}
 totalTime = 0
+once = True
 
 scpt = applescript.AppleScript('''
 on run {arg1}
@@ -25,7 +26,7 @@ on run {arg1}
             if playing then
                 tell the front document
                     set mySlide to slide number of current slide
-                    do shell script ("curl 'http://localhost:8327/main?slide='" & mySlide)
+                    do shell script ("curl 'http://localhost:49552/main?slide='" & mySlide)
                     log (mySlide)
                 end tell
             end if
@@ -40,6 +41,7 @@ def threadApplescript():
     return
 
 class MyHandler(http.server.BaseHTTPRequestHandler):
+
     def do_HEAD(self):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
@@ -47,6 +49,8 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
         global totalTime
+        global once
+
         path = self.path
         res = urlparse(path)
         if res.path == "/main":
@@ -59,8 +63,10 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
                 diff = datetime.today() - prevSlide['ts']
                 hours, remainder = divmod(diff.total_seconds(), 3600)
                 minutes, seconds = divmod(remainder, 60)
-                print("slide %s - %02d:%02d"%(int(slide)-1,minutes, seconds))
-                totalTime = totalTime + diff.total_seconds()
+                if not(once):
+                    print("slide %s - %02d:%02d"%(int(slide)-1,minutes, seconds))
+                    totalTime = totalTime + diff.total_seconds()
+                once = False  
                 prevSlide['num'] = slide
                 prevSlide['ts'] = datetime.today()
                 
@@ -93,6 +99,7 @@ def signal_handler(sig, frame):
     sys.exit(0)
 
 if __name__ == "__main__":
+    socketserver.TCPServer.allow_reuse_address = True
     httpd = socketserver.TCPServer(("", PORT), MyHandler)
     print("Press CTRL+C to quit")
     signal.signal(signal.SIGINT, signal_handler)
