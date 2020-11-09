@@ -59,7 +59,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
                 diff = datetime.today() - prevSlide['ts']
                 hours, remainder = divmod(diff.total_seconds(), 3600)
                 minutes, seconds = divmod(remainder, 60)
-                print("slide %s - %02d:%02d"%(slide,minutes, seconds))
+                print("slide %s - %02d:%02d"%(int(slide)-1,minutes, seconds))
                 totalTime = totalTime + diff.total_seconds()
                 prevSlide['num'] = slide
                 prevSlide['ts'] = datetime.today()
