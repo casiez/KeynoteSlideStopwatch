@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
      name='keynoteSlideStopwatch',  
-     version='0.1.5',
+     version='0.1.6',
      scripts=['keynoteSlideStopwatch'] ,
      author="Géry Casiez",
      author_email="gery.casiez@gmail.com",
