@@ -17,3 +17,7 @@ slide 10 - 00:03
 slide 11 - 00:10
 Total - 00:00:39
 ```
+
+Limitations:
+- the time for the first slide displayed is not measured
+- navigating slides backwards is not supported yet
