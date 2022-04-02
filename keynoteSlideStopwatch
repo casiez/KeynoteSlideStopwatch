@@ -26,7 +26,7 @@ on run {arg1}
             if playing then
                 tell the front document
                     set mySlide to slide number of current slide
-                    do shell script ("curl 'http://localhost:49552/main?slide='" & mySlide)
+                    do shell script ("curl http://localhost:" & the arg1 & "/main?slide=" & mySlide)
                     log (mySlide)
                 end tell
             end if
