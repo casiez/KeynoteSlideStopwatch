@@ -1,3 +1,6 @@
+[![PyPI Version](https://img.shields.io/pypi/v/KeynoteSlideStopwatch)](https://pypi.org/project/KeynoteSlideStopwatch/)
+[![License](https://img.shields.io/github/license/casiez/KeynoteSlideStopwatch)](LICENSE)
+
 # Keynote Slide Stopwatch
 
 Allows to measure the time spent on each slide during a presentation with Apple Keynote.
