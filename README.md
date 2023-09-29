@@ -1,5 +1,6 @@
 [![PyPI Version](https://img.shields.io/pypi/v/KeynoteSlideStopwatch)](https://pypi.org/project/KeynoteSlideStopwatch/)
 [![License](https://img.shields.io/github/license/casiez/KeynoteSlideStopwatch)](LICENSE)
+[![Downloads](https://static.pepy.tech/badge/KeynoteSlideStopwatch)](https://pepy.tech/project/KeynoteSlideStopwatch)
 
 # Keynote Slide Stopwatch
 
